@@ -12,8 +12,8 @@ namespace EMP_Wage_NewBatch
         {
             Console.WriteLine("Welcome to Employee Wage Programme.");
             Random random = new Random();
-            const int EMP_PRESENT = 1;
-            int empinput = random.Next(0,2);
+            const int EMP_PRESENT = 1, EMP_PARTTIME = 2;
+            int empinput = random.Next(0,3);
             int WageperHour = 20;
             int DailyHours;
             int DailyWage;
@@ -21,6 +21,11 @@ namespace EMP_Wage_NewBatch
             {
                 Console.WriteLine("Employee is Present");
                 DailyHours = 8;
+            }
+            else if(empinput == EMP_PARTTIME)
+            {
+                Console.WriteLine("Employee is Part-time Present");
+                DailyHours = 4;
             }
             else
             {
