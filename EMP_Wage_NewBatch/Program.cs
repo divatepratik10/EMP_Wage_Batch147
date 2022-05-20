@@ -12,26 +12,33 @@ namespace EMP_Wage_NewBatch
         {
             Console.WriteLine("Welcome to Employee Wage Programme.");
             Random random = new Random();
-            const int EMP_PRESENT = 1, EMP_PARTTIME = 2;
+            const int EMP_ABSENT = 0, EMP_PRESENT = 1, EMP_PARTTIME = 2;
             int empinput = random.Next(0,3);
             int WageperHour = 20;
             int DailyHours;
             int DailyWage;
-            if (empinput == EMP_PRESENT)
+            switch(empinput)
             {
-                Console.WriteLine("Employee is Present");
+                case EMP_PRESENT:
+                Console.WriteLine("Employee is Full-time Present");
                 DailyHours = 8;
-            }
-            else if(empinput == EMP_PARTTIME)
-            {
+                break;
+
+                case EMP_PARTTIME:           
                 Console.WriteLine("Employee is Part-time Present");
                 DailyHours = 4;
-            }
-            else
-            {
+                break;
+
+                case EMP_ABSENT:
                 Console.WriteLine("Employee is Absent");
                 DailyHours = 0;
+                break;
+
+                default:
+                    Console.WriteLine("something went wrong.....");
+                break;
             }
+
             DailyWage = DailyHours * WageperHour;
             Console.WriteLine("Daily Wage of Employee is {0}", DailyWage);
             Console.ReadLine();
