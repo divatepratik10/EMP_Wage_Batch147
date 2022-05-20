@@ -15,35 +15,48 @@ namespace EMP_Wage_NewBatch
             Console.WriteLine("Welcome to Employee Wage Programme.");
             Random random = new Random();
             const int EMP_ABSENT = 0, EMP_PRESENT = 1, EMP_PARTTIME = 2;
-            int empinput = random.Next(0,3);
             int WageperHour = 20;
             int DailyWage;
-            switch(empinput)
+            int MaxWorkingDays = 20;
+            int MaxWorkHours = 100;
+            int TotalEmpWage = 0;
+            int TotalWorkHours = 0;
+            int day = 1;
+
+            while (day <= MaxWorkingDays && DH <= MaxWorkHours)
             {
-                case EMP_PRESENT:
-                Console.WriteLine("Employee is Full-time Present");
-                DH = 8;
-                break;
+                int empinput = random.Next(0, 3);
 
-                case EMP_PARTTIME:           
-                Console.WriteLine("Employee is Part-time Present");
-                DH = 4;
-                break;
+                switch (empinput)
+                {
+                    case EMP_PRESENT:
+                        Console.WriteLine("Employee is Full-time Present");
+                        DH = 8;
+                        break;
 
-                case EMP_ABSENT:
-                Console.WriteLine("Employee is Absent");
-                DH = 0;
-                break;
+                    case EMP_PARTTIME:
+                        Console.WriteLine("Employee is Part-time Present");
+                        DH = 4;
+                        break;
 
-                default:
-                    Console.WriteLine("something went wrong.....");
-                break;
+                    case EMP_ABSENT:
+                        Console.WriteLine("Employee is Absent");
+                        DH = 0;
+                        break;
+
+                    default:
+                        Console.WriteLine("something went wrong.....");
+                        break;
+                }
+                DailyWage = DH * WageperHour;
+                Console.WriteLine("Daily Wage of Employee of day {0} is {1}", day, DailyWage);
+                Console.ReadLine();
+                TotalEmpWage += DailyWage;
+                TotalWorkHours += DH;
+                day++;
             }
-
-            DailyWage = DH * WageperHour;
-            Console.WriteLine("Daily Wage of Employee is {0}", DailyWage);
+            Console.WriteLine("Total Employee Wage of {0} days and {1} working hours is {2}",day-1,TotalWorkHours,TotalEmpWage);
             Console.ReadLine();
-
         }
     }
 }
